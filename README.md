@@ -28,6 +28,8 @@ More information about the dataset structure is availble in [http://humangrasp.i
 
 ## Object classification
 
+This code is heavily borrowed from [touch](https://github.com/erkil1452/touch) and [View-GCN](https://github.com/weixmath/view-GCN).
+
 Run the code from the root working directory (the one containing this readme).
 
 ### Training
@@ -37,7 +39,7 @@ python classification/train.py
 ```
 
 ## Terms
-Usage of this dataset (including all data, models, and code) is subject to the associated license, found in [LICENSE](http://humangrasp.io/license.html). The license permits the use of released code, dataset and models for research purposes only.
+Usage of this dataset is subject to the associated license, found in [LICENSE](http://humangrasp.io/license.html). The license permits the use of released code, dataset and models for research purposes only.
 
 We also ask that you cite the associated paper if you make use of this dataset; following is the BibTeX entry:
 
