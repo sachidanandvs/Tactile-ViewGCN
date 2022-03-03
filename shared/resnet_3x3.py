@@ -145,12 +145,12 @@ class ResNet(nn.Module):
         # 2 lines for view_cgn
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        #x = self.layer3(x)
-        #x = self.layer4(x)
+        # x = self.layer3(x)
+        # x = self.layer4(x)
 
-        #x = self.avgpool(x)
-        #x = x.view(x.size(0), -1)
-        #x = self.fc(x)
+        # x = self.avgpool(x)
+        # x = x.view(x.size(0), -1)
+        # x = self.fc(x)
 
         return x
 

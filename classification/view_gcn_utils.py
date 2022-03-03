@@ -5,7 +5,7 @@ import torch.nn.functional as Functional
 def square_distance(src, dst):
     B, N, _ = src.shape
     _, M, _ = dst.shape
-    dist = -2 * torch.matmul(src, dst.permute(0, 2, 1))
+    dist = -2 * torch.matmul(src.float(), dst.permute(0, 2, 1).float())
     dist += torch.sum(src ** 2, -1).view(B, N, 1)
     dist += torch.sum(dst ** 2, -1).view(B, 1, M)
     return dist
@@ -73,7 +73,7 @@ class KNN_dist(nn.Module):
         F = index_points(F,id)
         v = index_points(vertices,id)
         v_0 = v[:,:,0,:].unsqueeze(-2).repeat(1,1,self.k,1)
-        v_F = torch.cat((v_0, v, v_0-v,torch.norm(v_0-v,dim=-1,p=2).unsqueeze(-1)),-1).float()
+        v_F = torch.cat((v_0, v, v_0-v,torch.norm((v_0-v).float(),dim=-1,p=2).unsqueeze(-1)),-1).float()
         v_F = self.R(v_F)
         F = torch.mul(v_F, F)
         F = torch.sum(F,-2)

@@ -79,13 +79,15 @@ class view_GCN(Model):
         else:
             self.net_1 = model.net_1
             self.net_2 = model.net_2
-        if self.num_views == 20:
+        if self.num_views == 8:
             phi = (1 + np.sqrt(5)) / 2
             vertices = [[1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1],
-                        [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1],
+                        [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1]]
+            '''
                         [0, 1 / phi, phi], [0, 1 / phi, -phi], [0, -1 / phi, phi], [0, -1 / phi, -phi],
                         [phi, 0, 1 / phi], [phi, 0, -1 / phi], [-phi, 0, 1 / phi], [-phi, 0, -1 / phi],
                         [1 / phi, phi, 0], [-1 / phi, phi, 0], [1 / phi, -phi, 0], [-1 / phi, -phi, 0]]
+                        '''
         elif self.num_views == 12:
             phi = np.sqrt(3)
             vertices = [[1, 0, phi/3], [phi/2, -1/2, phi/3], [1/2,-phi/2,phi/3],
@@ -98,7 +100,7 @@ class view_GCN(Model):
         self.NonLocalMP1 = NonLocalMP(n_view=self.num_views)
         self.LocalGCN2 = LocalGCN(k=3, n_views=self.num_views//2)
         self.NonLocalMP2 = NonLocalMP(n_view=self.num_views//2)
-        self.LocalGCN3 = LocalGCN(k=3, n_views=self.num_views//4)
+        self.LocalGCN3 = LocalGCN(k=2, n_views=self.num_views//4)
         self.View_selector1 = View_selector(n_views=self.num_views, sampled_view=self.num_views//2)
         self.View_selector2 = View_selector(n_views=self.num_views//2, sampled_view=self.num_views//4)
 

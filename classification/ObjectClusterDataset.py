@@ -34,7 +34,7 @@ class ObjectClusterDataset(ObjectDataset):
         recordingIds = self.meta['recordingId'][allIndices]
         recordings = np.unique(recordingIds)
 
-        nEmbDims = 8    #changed from 8 to 12 
+        nEmbDims = 8    
         self.clusters = {}  
         self.clusterIds = np.zeros((self.pressure.shape[0],), int)
 
